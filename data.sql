@@ -31,14 +31,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table oncuoiky.users: ~6 rows (approximately)
+-- Dumping data for table oncuoiky.users: ~9 rows (approximately)
 INSERT INTO `users` (`id`, `username`, `password`, `avatar`, `email`, `role`, `birthday`) VALUES
 	(1, 'Mai Quốc Trường', '123', 'https://randomuser.me/api/portraits/men/1.jpg', 'maiquoctruong2403@gmail.com', 'Admin', '2004-12-09'),
 	(2, 'Jane Smith', '123', 'https://randomuser.me/api/portraits/women/2.jpg', 'jane@example.com', 'User', '2014-11-05'),
 	(3, 'Mai Truong Mai', '123456789', 'http://localhost:3000/uploads/1733755381641.jpeg', 'maitruong24113@gmail.com', 'User', '2004-01-02'),
 	(4, 'aaa', '123', 'http://localhost:3000/uploads/1733720765746.jpg', 'aa@gmail.com', 'User', '2024-11-03'),
 	(5, 'bb chang', '12345', 'http://localhost:3000/uploads/1733759454248.jpg', 'nbbchang@gmail.com', 'User', '2003-01-13'),
-	(6, 'Karina', '123456789', 'http://localhost:3000/uploads/1733759568132.jpeg', 'karinaaes1@gmail.com', 'User', '2002-12-16');
+	(6, 'Karina Aespa', '123456', 'http://localhost:3000/uploads/1733760199651.jpg', 'karina13233@gmail.com', 'User', '2003-08-26'),
+	(7, 'Winter', '123', 'http://localhost:3000/uploads/1733761871634.jpg', 'winter123@gmail.com', 'User', '2003-08-08'),
+	(8, 'Ningning', '12345', 'http://localhost:3000/uploads/1733762668760.jpg', 'ning@gmail.com', 'User', '2005-07-20'),
+	(9, 'Giselle', '123', 'http://localhost:3000/uploads/1733763887126.jpg', 'giselle123456@gmail.com', 'User', '2006-03-17');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

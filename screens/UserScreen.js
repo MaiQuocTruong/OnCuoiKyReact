@@ -240,7 +240,11 @@ export default function UserScreen() {
         <FlatList
           data={filterUsers()}  
           renderItem={renderUserRow}
-          keyExtractor={(item) => item.id.toString()}
+          // sử dụng keyExtractor này là MYSQL
+          // keyExtractor={(item) => item.id.toString()}
+
+          // sử dụng keyExtractor này là MONGODB
+          keyExtractor={(item) => item._id.toString()}
         />
       </ScrollView>
     </View>
