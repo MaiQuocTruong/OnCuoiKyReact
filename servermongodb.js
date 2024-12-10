@@ -26,8 +26,22 @@ const userSchema = new mongoose.Schema({
     avatar: { type: String },
     id: { type: Number, unique: true, default: null },
 });
-
 const User = mongoose.model('User', userSchema);
+
+// Định nghĩa Schema và Model cho category
+const categorySchema = new mongoose.Schema({
+    id: { type: Number, required: true, unique: true },
+    name: { type: String, required: true },
+    image: { type: String, required: true },
+});
+const Category = mongoose.model('Category', categorySchema);
+
+// Định nghĩa Schema và Model cho location
+const locationSchema = new mongoose.Schema({
+    id: { type: Number, required: true, unique: true },
+    image: { type: String, required: true },
+});
+const Location = mongoose.model('Location', locationSchema);
 
 // Setup multer cho file uploads
 const storage = multer.diskStorage({
@@ -48,6 +62,75 @@ app.get('/users', async (req, res) => {
         res.json(users);
     } catch (err) {
         res.status(500).json({ error: 'Lỗi máy chủ' });
+    }
+});
+
+// Endpoint hiển thị danh sách category
+app.get('/categories', async (req, res) => {
+    try {
+        const categories = await Category.find();
+        res.json(categories);
+    } catch (err) {
+        res.status(500).json({ error: 'Lỗi máy chủ' });
+    }
+});
+
+// Endpoint hiển thị danh sách location
+app.get('/locations', async (req, res) => {
+    try {
+        const locations = await Location.find();
+        res.json(locations);
+    } catch (err) {
+        res.status(500).json({ error: 'Lỗi máy chủ' });
+    }
+});
+
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Vui lòng điền đầy đủ email và mật khẩu.' });
+    }
+
+    try {
+        const user = await User.findOne({ email, password });
+        if (!user) {
+            return res.status(401).json({ message: 'Email hoặc mật khẩu không đúng.' });
+        }
+
+        res.json({
+            message: 'Đăng nhập thành công',
+            user,
+            role: user.role,
+        });
+    } catch (err) {
+        console.error('Lỗi khi xử lý đăng nhập:', err);
+        res.status(500).json({ message: 'Đã xảy ra lỗi máy chủ.' });
+    }
+});
+
+app.put('/forgetpassword', async (req, res) => {
+    const { email, newPassword } = req.body;
+
+    if (!email || !newPassword) {
+        return res.status(400).json({ error: 'Vui lòng cung cấp email và mật khẩu mới.' });
+    }
+
+    try {
+        // Kiểm tra email
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ error: 'Email không tồn tại trong hệ thống.' });
+        }
+
+        // Cập nhật mật khẩu mới
+        user.password = newPassword;
+        await user.save();
+
+        res.status(200).json({ message: 'Cập nhật mật khẩu thành công.' });
+    } catch (error) {
+        console.error('Lỗi máy chủ:', error);
+        res.status(500).json({ error: 'Đã xảy ra lỗi máy chủ.' });
     }
 });
 

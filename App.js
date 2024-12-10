@@ -5,6 +5,8 @@ import UserScreen from './screens/UserScreen';
 import ViewUserScreen from './screens/ViewUserScreen';
 import LoginScreen from './screens/LoginScreen';
 import Screen01 from './screens/Screen01';
+import SignUp from './screens/SignUp';
+import ForgetPass from './screens/ForgetPass';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +17,8 @@ export default function App() {
         <Stack.Screen name="UserScreen" component={UserScreen} options={{ title: 'User List' }} />
         <Stack.Screen name="ViewUserScreen" component={ViewUserScreen} options={{ title: 'User Details' }} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ title: 'Login' }} />
+        <Stack.Screen name="SignUp" component={SignUp} options={{ title: 'Sign Up' }} />
+        <Stack.Screen name="ForgetPass" component={ForgetPass} options={{ title: 'Forget Pass' }} />
         <Stack.Screen name="Screen01" component={Screen01} options={{ title: 'Screen01' }} />
       </Stack.Navigator>
     </NavigationContainer>

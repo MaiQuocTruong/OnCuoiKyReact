@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "67576d1d9c92d98f7a00aa40"
+  },
+  "id": 1,
+  "name": "Resort",
+  "image": "https://i.imgur.com/05e4V86.png"
+},
+{
+  "_id": {
+    "$oid": "67576d1d9c92d98f7a00aa41"
+  },
+  "id": 2,
+  "name": "Homestay",
+  "image": "https://i.imgur.com/Hj5mgBm.png"
+},
+{
+  "_id": {
+    "$oid": "67576d1d9c92d98f7a00aa42"
+  },
+  "id": 3,
+  "name": "Hotel",
+  "image": "https://i.imgur.com/bueMwgq.png"
+},
+{
+  "_id": {
+    "$oid": "67576d1d9c92d98f7a00aa43"
+  },
+  "id": 4,
+  "name": "Lodge",
+  "image": "https://i.imgur.com/qhkysxR.png"
+},
+{
+  "_id": {
+    "$oid": "67576d1d9c92d98f7a00aa44"
+  },
+  "id": 5,
+  "name": "Villa",
+  "image": "https://i.imgur.com/EEWX6UL.png"
+},
+{
+  "_id": {
+    "$oid": "67576d1d9c92d98f7a00aa45"
+  },
+  "id": 6,
+  "name": "Apartment",
+  "image": "https://i.imgur.com/rD3zVKG.png"
+},
+{
+  "_id": {
+    "$oid": "67576d1d9c92d98f7a00aa46"
+  },
+  "id": 7,
+  "name": "Hostel",
+  "image": "https://i.imgur.com/goK3GYX.png"
+},
+{
+  "_id": {
+    "$oid": "67576d1d9c92d98f7a00aa47"
+  },
+  "id": 8,
+  "name": "See all",
+  "image": "https://i.imgur.com/6wLDcNr.png"
+}]

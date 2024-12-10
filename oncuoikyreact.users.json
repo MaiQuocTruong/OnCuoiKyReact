@@ -153,4 +153,49 @@
   "avatar": "http://localhost:3000/uploads/1733781783463.png",
   "id": 11,
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6758ab4b68d5149be065bd6c"
+  },
+  "username": "Trí Trần",
+  "password": "123456",
+  "email": "tritran@gmail.com",
+  "role": "User",
+  "birthday": {
+    "$date": "2007-01-17T00:00:00.000Z"
+  },
+  "avatar": "http://localhost:3000/uploads/1733864267193.jpeg",
+  "id": 12,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6758b045d88602151e986bc3"
+  },
+  "username": "Hiếu Nhân",
+  "password": "123456",
+  "email": "hieunhan9191@gmail.com",
+  "role": "User",
+  "birthday": {
+    "$date": "2003-07-24T00:00:00.000Z"
+  },
+  "avatar": "http://localhost:3000/uploads/1733865540996.jpg",
+  "id": 13,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6758b101d88602151e986bd8"
+  },
+  "username": "Hải Nguyễn Đoàn",
+  "password": "123456",
+  "email": "hai123@gmail.com",
+  "role": "User",
+  "birthday": {
+    "$date": "2003-03-13T00:00:00.000Z"
+  },
+  "avatar": "http://localhost:3000/uploads/1733865729936.jpg",
+  "id": 14,
+  "__v": 0
 }]

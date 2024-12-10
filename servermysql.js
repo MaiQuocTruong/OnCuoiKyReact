@@ -1,4 +1,3 @@
-// serverecom.js
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -18,9 +17,7 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + path.extname(file.originalname)); 
     }
 });
-
 const upload = multer({ storage });
-
 // setup để kết nối mysql
 const db = mysql.createConnection({
     host: '127.0.0.1',  // địa chỉ localhost của mysql
@@ -47,7 +44,7 @@ app.get('/users', (req, res) => {
 });
 
 // Endpoint hiển thị danh sách category
-app.get('/category', (req, res) => {
+app.get('/categories', (req, res) => {
     const query = 'SELECT * FROM category';
     db.query(query, (err, result) => {
         if (err) {
@@ -58,7 +55,7 @@ app.get('/category', (req, res) => {
 });
 
 // Endpoint hiển thị danh sách location
-app.get('/location', (req, res) => {
+app.get('/locations', (req, res) => {
     const query = 'SELECT * FROM location';
     db.query(query, (err, result) => {
         if (err) {
@@ -85,6 +82,39 @@ app.post('/login', express.json(), (req, res) => {
         } else {
             res.status(401).json({ message: 'Email hoặc password không hợp lệ' });
         }
+    });
+});
+
+// Endpoint để quên mật khẩu và cập nhật mật khẩu mới
+app.put('/forgetpassword', express.json(), (req, res) => {
+    const { email, newPassword } = req.body;
+
+    if (!email || !newPassword) {
+        return res.status(400).json({ error: 'Vui lòng cung cấp email và mật khẩu mới.' });
+    }
+
+    // Kiểm tra xem email có tồn tại không
+    const checkEmailQuery = 'SELECT * FROM users WHERE email = ?';
+    db.query(checkEmailQuery, [email], (err, result) => {
+        if (err) {
+            console.error('Lỗi kiểm tra email:', err);
+            return res.status(500).json({ error: 'Lỗi máy chủ' });
+        }
+
+        if (result.length === 0) {
+            return res.status(404).json({ error: 'Email không tồn tại trong hệ thống.' });
+        }
+
+        // Cập nhật mật khẩu mới
+        const updatePasswordQuery = 'UPDATE users SET password = ? WHERE email = ?';
+        db.query(updatePasswordQuery, [newPassword, email], (err, result) => {
+            if (err) {
+                console.error('Lỗi cập nhật mật khẩu:', err);
+                return res.status(500).json({ error: 'Lỗi máy chủ khi cập nhật mật khẩu.' });
+            }
+
+            res.status(200).json({ message: 'Cập nhật mật khẩu thành công.' });
+        });
     });
 });
 
@@ -126,7 +156,6 @@ app.post('/users/add', upload.single('avatar'), (req, res) => {
     });
 });
 
-
 // Endpoint để xóa tài khoản
 app.delete('/delete-user', express.json(), (req, res) => {
     const { username } = req.body;
@@ -153,7 +182,6 @@ app.delete('/delete-user', express.json(), (req, res) => {
         });
     });
 });
-
 
 // Endpoint to update user
 app.put('/update-user', upload.single('avatar'), (req, res) => {

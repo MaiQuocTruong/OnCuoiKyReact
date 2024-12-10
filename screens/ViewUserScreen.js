@@ -67,10 +67,10 @@ export default function ViewUserScreen({ route }) {
   const handleSave = async () => {
     const formData = new FormData();
     // formData id ở dưới là dành cho MYSQL
-    formData.append('id', user.id);
+    // formData.append('id', user.id);
 
     // formData _id ở dưới là dành cho MONGODB
-    // formData.append('_id', user._id);
+    formData.append('_id', user._id);
     formData.append('username', username);
     formData.append('email', email);
     formData.append('password', password);
