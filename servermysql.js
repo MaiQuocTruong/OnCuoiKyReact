@@ -46,6 +46,48 @@ app.get('/users', (req, res) => {
     });
 });
 
+// Endpoint hiển thị danh sách category
+app.get('/category', (req, res) => {
+    const query = 'SELECT * FROM category';
+    db.query(query, (err, result) => {
+        if (err) {
+          return res.status(500).json({ error: 'Lỗi máy chủ' });
+        }
+        res.json(result);
+    });
+});
+
+// Endpoint hiển thị danh sách location
+app.get('/location', (req, res) => {
+    const query = 'SELECT * FROM location';
+    db.query(query, (err, result) => {
+        if (err) {
+          return res.status(500).json({ error: 'Lỗi máy chủ' });
+        }
+        res.json(result);
+    });
+});
+
+// Endpoint đăng nhập
+app.post('/login', express.json(), (req, res) => {
+    const { email, password } = req.body;
+    const query = 'SELECT * FROM users WHERE email = ? AND password = ?';
+    db.query(query, [email, password], (err, result) => {
+        if (err) {
+            return res.status(500).json({ error: 'Lỗi máy chủ' });
+        }
+        if (result.length > 0) {
+            res.json({ 
+                message: 'Đăng nhập thành công', 
+                user: result[0], 
+                role: result[0].role
+            });
+        } else {
+            res.status(401).json({ message: 'Email hoặc password không hợp lệ' });
+        }
+    });
+});
+
 // Endpoint để thêm user
 app.post('/users/add', upload.single('avatar'), (req, res) => {
     const { username, password, email, role, birthday } = req.body;

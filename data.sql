@@ -19,6 +19,41 @@
 CREATE DATABASE IF NOT EXISTS `oncuoiky` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `oncuoiky`;
 
+-- Dumping structure for table oncuoiky.category
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table oncuoiky.category: ~8 rows (approximately)
+INSERT INTO `category` (`id`, `name`, `image`) VALUES
+	(1, 'Resort', 'https://i.imgur.com/05e4V86.png'),
+	(2, 'Homestay', 'https://i.imgur.com/Hj5mgBm.png'),
+	(3, 'Hotel', 'https://i.imgur.com/bueMwgq.png'),
+	(4, 'Lodge', 'https://i.imgur.com/qhkysxR.png'),
+	(5, 'Villa', 'https://i.imgur.com/EEWX6UL.png'),
+	(6, 'Apartment', 'https://i.imgur.com/rD3zVKG.png'),
+	(7, 'Hostel', 'https://i.imgur.com/goK3GYX.png'),
+	(8, 'See all', 'https://i.imgur.com/6wLDcNr.png');
+
+-- Dumping structure for table oncuoiky.location
+CREATE TABLE IF NOT EXISTS `location` (
+  `id` int NOT NULL,
+  `image` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table oncuoiky.location: ~6 rows (approximately)
+INSERT INTO `location` (`id`, `image`) VALUES
+	(1, 'https://i.imgur.com/riEaO08.png'),
+	(2, 'https://i.imgur.com/cai3XhU.png'),
+	(3, 'https://i.imgur.com/oMSH0dg.png'),
+	(4, 'https://i.imgur.com/4WW563e.png'),
+	(5, 'https://i.imgur.com/Ze8iOUf.png'),
+	(6, 'https://i.imgur.com/Ze8iOUf.png');
+
 -- Dumping structure for table oncuoiky.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,

@@ -241,10 +241,10 @@ export default function UserScreen() {
           data={filterUsers()}  
           renderItem={renderUserRow}
           // sử dụng keyExtractor này là MYSQL
-          // keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item.id.toString()}
 
           // sử dụng keyExtractor này là MONGODB
-          keyExtractor={(item) => item._id.toString()}
+          // keyExtractor={(item) => item._id.toString()}
         />
       </ScrollView>
     </View>
